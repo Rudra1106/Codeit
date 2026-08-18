@@ -1,34 +1,138 @@
-html, body, #root {
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
   margin: 0;
+  width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #1e1e1e;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 .app {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 1fr 200px;
-  grid-template-areas:
-    "explorer editor"
-    "terminal terminal";
-  height: 100vh;
-  font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.titlebar {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: #252526;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  background: #333333;
+  color: white;
+  border: 1px solid #555555;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background: #444444;
+}
+
+.workspace {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.editor-area {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;x
+  flex-direction: column;
+}
+
+.tab {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background: #2d2d2d;
+  border-bottom: 1px solid #3c3c3c;
+  font-size: 13px;
 }
 
 .explorer {
-  grid-area: explorer;
+  width: 260px;
+  flex-shrink: 0;
   background: #252526;
-  color: #ccc;
-  padding: 8px;
+  border-right: 1px solid #3c3c3c;
+  overflow-y: auto;
 }
 
-.editor {
-  grid-area: editor;
+.explorer-header {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid #3c3c3c;
 }
 
-.terminal {
-  grid-area: terminal;
-  background: #1e1e1e;
-  color: #ccc;
-  padding: 8px;
-  font-family: monospace;
+.explorer-header span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #cccccc;
+}
+
+.explorer-header button {
+  background: #333333;
+  color: white;
+  border: 1px solid #555555;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.explorer-header button:hover {
+  background: #444444;
+}
+
+.empty-explorer {
+  padding: 16px;
+  color: #888888;
+  font-size: 13px;
+}
+
+.explorer-item {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.explorer-item:hover {
+  background: #37373d;
+}
+
+.explorer-icon {
+  font-size: 14px;
 }

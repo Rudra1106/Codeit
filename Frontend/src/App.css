@@ -1,0 +1,34 @@
+html, body, #root {
+  margin: 0;
+  height: 100%;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr 200px;
+  grid-template-areas:
+    "explorer editor"
+    "terminal terminal";
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.explorer {
+  grid-area: explorer;
+  background: #252526;
+  color: #ccc;
+  padding: 8px;
+}
+
+.editor {
+  grid-area: editor;
+}
+
+.terminal {
+  grid-area: terminal;
+  background: #1e1e1e;
+  color: #ccc;
+  padding: 8px;
+  font-family: monospace;
+}

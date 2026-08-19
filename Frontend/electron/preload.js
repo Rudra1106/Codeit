@@ -1,11 +1,13 @@
-const { contextBridge, ipcRenderer } = require("electron");
+import { contextBridge, ipcRenderer } from "electron";
+
 contextBridge.exposeInMainWorld("electronAPI", {
   openFile: () => ipcRenderer.invoke("file:open"),
 
   readFile: (filePath) =>
     ipcRenderer.invoke("file:read", filePath),
 
-  openFolder: () => ipcRenderer.invoke("folder:open"),
+  openFolder: () =>
+    ipcRenderer.invoke("folder:open"),
 
   saveFile: (filePath, content) =>
     ipcRenderer.invoke("file:save", filePath, content),
@@ -13,6 +15,7 @@ contextBridge.exposeInMainWorld("electronAPI", {
   saveFileAs: (defaultPath, content) =>
     ipcRenderer.invoke("file:saveAs", defaultPath, content),
 });
+
 // This creates a very small public API for the renderer:
 
 // window.electronAPI
@@ -23,9 +26,7 @@ contextBridge.exposeInMainWorld("electronAPI", {
 // └── saveFileAs(...)
 
 // This is much safer than giving React all of Node.js:
-
 // require("fs")
-
 // which is exactly why we used:
 
 // contextIsolation: true
